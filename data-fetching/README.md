@@ -3,9 +3,10 @@
 ## Experiment #1
 
 - [x] Sequential appending fetch with argument
+- [x] Sequential replacing fetch with argument
 - [x] Sequential mutations with argument
 - [x] Optimistic pesimistic updates
-- [ ] Latest replace fetch with argument
+- [ ] Latest replacing fetch with argument
 
 ```js
 const usersQuery = User.createSequentialQuery({ company_id: 15})
