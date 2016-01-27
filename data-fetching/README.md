@@ -2,32 +2,41 @@
 
 ## Experiment #1
 
+- [x] Sequential appending fetch with argument
+- [x] Sequential mutations with argument
+- [x] Optimistic pesimistic updates
+- [ ] Latest replace fetch with argument
+
 ```js
-const usersQuery = User.createQuery({ company_id: 15})
+const usersQuery = User.createSequentialQuery({ company_id: 15})
 usersQuery.subscribe(result => {
   setState({ users: { isLoading: result.isLoading, users: result.items, error: result.error } })
 })
 
-const addUserMutation = User.createAddMutation()
-newUserMutation.subscribe(result => {
+const addUserMutation = User.createSequentialMutation('add')
+addUserMutation.subscribe(result => {
   setState({ userMutation: { isLoading: result.isLoading, user: result.item, error: result.error } })
 })
 
-usersQuery.get(3)
+usersQuery.append(3)
 // { users: { isLoadig: true, items: [], error: undefined } } 
 // .... 
 // { users: { isLoadig: false, items: [User, User, User], error: undefined } }
 
-addUserMutation.post({ name: 'Viktor', company_id: 15 })
+addUserMutation.dispatch({ name: 'Viktor', company_id: 15 })
 // { userMutation: { isLoadig: true, item: undefined, error: undefined } }
 // { users: { isLoadig: false, items: [OptimisticUser, User, User, User], error: undefined } }
 // ....
 // { userMutation: { isLoadig: false, item: User, error: undefined } }
 // { users: { isLoadig: false, items: [User, User, User, User], error: undefined } }
 
-usersQuery.get(8)
-// Uses flatMap in backend which makes it sequential
-// { users: { isLoadig: true, items: [newUser, User, User, User], error: undefined } }
+usersQuery.append(8)
+// { users: { isLoadig: true, items: [User, User, User, User], error: undefined } }
 // ....
-// { users: { isLoadig: false, items: [newUser, User, User, User, User, User, User, User], error: undefined } }
+// { users: { isLoadig: false, items: [User, User, User, User, User, User, User, User], error: undefined } }
+
+usersQuery.replace(8)
+// { users: { isLoadig: true, items: [User, User, User, User, User, User, User, User], error: undefined } }
+// ....
+// { users: { isLoadig: false, items: [User, User, User, User, User, User, User, User], error: undefined } }
 ```
