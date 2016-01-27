@@ -13,7 +13,7 @@ newUserMutation.subscribe(result => {
   setState({ userMutation: { isLoading: result.isLoading, user: result.item, error: result.error } })
 })
 
-usersQuery.fetch(3)
+usersQuery.get(3)
 // { users: { isLoadig: true, items: [], error: undefined } } 
 // .... 
 // { users: { isLoadig: false, items: [User, User, User], error: undefined } }
@@ -25,7 +25,7 @@ addUserMutation.post({ name: 'Viktor', company_id: 15 })
 // { userMutation: { isLoadig: false, item: User, error: undefined } }
 // { users: { isLoadig: false, items: [User, User, User, User], error: undefined } }
 
-usersQuery.fetch(8)
+usersQuery.get(8)
 // Uses flatMap in backend which makes it sequential
 // { users: { isLoadig: true, items: [newUser, User, User, User], error: undefined } }
 // ....
