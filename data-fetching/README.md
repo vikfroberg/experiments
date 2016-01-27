@@ -9,7 +9,7 @@ usersQuery.subscribe(result => {
 })
 
 // How to handle pesimistic update if it failed?
-const newUserMutation = Store.createNewUserMutation()
+const addUserMutation = Store.createAddUserMutation()
 newUserMutation.subscribe(result => {
   setState({ userMutation: { isLoading: result.isLoading, user: result.item, error: result.error } })
 })
@@ -19,7 +19,7 @@ usersQuery.fetch(3)
 // .... 
 // { users: { isLoadig: false, items: [User, User, User], error: undefined } }
 
-newUserMutation.dispatch({ name: 'Viktor' })
+addUserMutation.dispatch({ name: 'Viktor', company_id: 15 })
 // { userMutation: { isLoadig: true, item: undefined, error: undefined } }
 // { users: { isLoadig: false, items: [OptimisticUser, User, User, User], error: undefined } }
 // ....
