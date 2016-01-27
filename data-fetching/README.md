@@ -19,7 +19,7 @@ usersQuery.fetch(3)
 // .... 
 // { isLoadig: false, items: [User, User, User], error: undefined }
 
-newUserMutation({ name: 'Viktor' })
+newUserMutation.dispatch({ name: 'Viktor' })
 // { isLoadig: false, items: [newUser, User, User, User], error: undefined }
 
 usersQuery.fetch(8)
