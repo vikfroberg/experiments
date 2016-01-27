@@ -3,13 +3,13 @@
 ## Experiment #1
 
 ```js
-const usersQuery = Store.createUsersQuery({ company_id: 15})
+const usersQuery = User.createQuery({ company_id: 15})
 usersQuery.subscribe(result => {
   setState({ users: { isLoading: result.isLoading, users: result.items, error: result.error } })
 })
 
 // How to handle pesimistic update if it failed?
-const addUserMutation = Store.createAddUserMutation()
+const addUserMutation = User.createAddMutation()
 newUserMutation.subscribe(result => {
   setState({ userMutation: { isLoading: result.isLoading, user: result.item, error: result.error } })
 })
