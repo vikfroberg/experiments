@@ -2,6 +2,8 @@
 
 ## Experiment #1
 
+Replace should always cancel the other ones and return the new content
+
 - [x] Sequential appending fetch with argument
 - [x] Sequential replacing fetch with argument
 - [x] Sequential mutations with argument
