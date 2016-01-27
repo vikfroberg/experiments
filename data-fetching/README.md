@@ -21,9 +21,9 @@ usersQuery.fetch(3)
 
 newUserMutation.dispatch({ name: 'Viktor' })
 // { userMutation: { isLoadig: true, item: undefined, error: undefined } }
-// { users: { isLoadig: false, items: [newUser, User, User, User], error: undefined } }
+// { users: { isLoadig: false, items: [OptimisticUser, User, User, User], error: undefined } }
 // ....
-// { userMutation: { isLoadig: false, item: NewUser, error: undefined } }
+// { userMutation: { isLoadig: false, item: User, error: undefined } }
 // { users: { isLoadig: false, items: [User, User, User, User], error: undefined } }
 
 usersQuery.fetch(8)
