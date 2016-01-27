@@ -18,7 +18,7 @@ usersQuery.fetch(3)
 // .... 
 // { users: { isLoadig: false, items: [User, User, User], error: undefined } }
 
-addUserMutation.dispatch({ name: 'Viktor', company_id: 15 })
+addUserMutation.post({ name: 'Viktor', company_id: 15 })
 // { userMutation: { isLoadig: true, item: undefined, error: undefined } }
 // { users: { isLoadig: false, items: [OptimisticUser, User, User, User], error: undefined } }
 // ....
